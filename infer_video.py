@@ -107,7 +107,7 @@ def main(args):
         print("Processing {}".format(video_name))
 
         # Initialize results:
-        boundary_boxes = []
+        boxes = []
         segments = [] # Sets to None.
         keypoints = []
         for frame_i, im in enumerate(read_video(video_name)):
@@ -139,7 +139,7 @@ def main(args):
             cls_boxes = [[], bbox_tensor]
             cls_keyps = [[], kps]
 
-            boundary_boxes.append(cls_boxes)
+            boxes.append(cls_boxes)
             segments.append(None)
             keypoints.append(cls_keyps)
 
@@ -150,7 +150,7 @@ def main(args):
         }
 
         datas = {
-            'boundary_boxes': boundary_boxes,
+            'boxes': boxes,
             'segments': segments,
             'keypoints': keypoints,
             'metadata': metadata
